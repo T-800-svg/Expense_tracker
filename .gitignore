@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+data.json
+data.json.bak
+budget.json
+recurring.json
+exports/
+.env
+venv/
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
