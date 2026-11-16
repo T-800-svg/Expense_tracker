@@ -12,6 +12,15 @@ def load_json(path, default):
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
+        backup = path + ".bak"
+        if os.path.exists(backup):
+            try:
+                with open(backup, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                print(f"[WARN] {path} was missing - restored from backup")
+                return data
+            except json.JSONDecodeError:
+                pass
         return default
     except json.JSONDecodeError:
         backup = path + ".bak"
