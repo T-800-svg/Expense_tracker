@@ -65,4 +65,15 @@ def edit_expense(expenses, expense_id):
 
 
 def delete_expense(expenses, expense_id):
-    pass
+    """Delete an expense by ID after confirmation."""
+    expense = find_expense(expenses, expense_id)
+    if expense is None:
+        print("No expense found with that ID.")
+        return
+    print(f"#{expense['id']} | Rs.{expense['amount']:,.0f} | {expense['category']} | {expense['date']} | {expense['description']}")
+    if input("Delete this expense? (y/n): ").strip().lower() == "y":
+        expenses.remove(expense)
+        save_data(expenses)
+        print("[OK] Expense deleted.")
+    else:
+        print("Cancelled.")
