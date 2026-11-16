@@ -1,6 +1,6 @@
 from datetime import datetime
 from storage import save_data
-
+from budget import check_budget
 
 def read_amount(prompt):
     """Keep asking until the user enters a positive number."""
@@ -58,6 +58,7 @@ def add_expense(expenses):
     expenses.append(expense)
     save_data(expenses)
     print(f"[OK] Added expense #{expense['id']}")
+    check_budget(expenses, only_alerts=True)
 
 
 def edit_expense(expenses, expense_id):
