@@ -61,7 +61,43 @@ def add_expense(expenses):
 
 
 def edit_expense(expenses, expense_id):
-    pass
+    """Edit an expense. Press Enter on any field to keep its current value."""
+    expense = find_expense(expenses, expense_id)
+    if expense is None:
+        print("No expense found with that ID.")
+        return
+
+    print("Press Enter to keep the current value.")
+
+    raw = input(f"Amount [{expense['amount']}]: ").strip()
+    if raw:
+        try:
+            value = float(raw)
+            if value > 0:
+                expense["amount"] = value
+            else:
+                print("Amount must be positive - keeping old value.")
+        except ValueError:
+            print("Invalid number - keeping old value.")
+
+    raw = input(f"Category [{expense['category']}]: ").strip()
+    if raw:
+        expense["category"] = raw.title()
+
+    raw = input(f"Date [{expense['date']}]: ").strip()
+    if raw:
+        try:
+            datetime.strptime(raw, "%Y-%m-%d")
+            expense["date"] = raw
+        except ValueError:
+            print("Invalid date - keeping old value.")
+
+    raw = input(f"Description [{expense['description']}]: ").strip()
+    if raw:
+        expense["description"] = raw
+
+    save_data(expenses)
+    print("[OK] Expense updated.")
 
 
 def delete_expense(expenses, expense_id):
