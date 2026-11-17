@@ -24,7 +24,19 @@ def filter_expenses(expenses):
     pass
 
 
-def get_monthly_total(expenses, month):
-    pass
+SORT_KEYS = {
+    "1": ("date", "Date"),
+    "2": ("amount", "Amount"),
+    "3": ("category", "Category"),
+    "4": ("id", "ID"),
+}
 
-print("hehe")
+
+def sort_expenses(rows, key, descending=False):
+    """Return the rows sorted by the given field."""
+    return sorted(rows, key=lambda e: e[key], reverse=descending)
+
+
+def get_monthly_total(expenses, month):
+    """Total spent in a month given as 'YYYY-MM'."""
+    return sum(e["amount"] for e in expenses if e["date"].startswith(month))
