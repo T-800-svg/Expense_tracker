@@ -22,7 +22,7 @@ def show_menu():
 
 
 def main():
-    print("Welcome to Expense Tracker")
+    print("Welcome to Expense Tracker Version 1.0")
     expenses = load_data()
     generate_recurring(expenses)
 
