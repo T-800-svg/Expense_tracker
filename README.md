@@ -123,7 +123,7 @@ Each expense is stored as:
 
 ### Startup and adding an expense
 
-> <img width="582" height="407" alt="image" src="https://github.com/user-attachments/assets/1ddbf1f2-b693-4c1b-8eb3-c967e63acc44" />
+> <img width="521" height="407" alt="Screenshot 2026-11-17 215114" src="https://github.com/user-attachments/assets/03dd4c4f-d843-4e0f-ad57-bf9919b52582" />
  the terminal after running `python main.py`, showing the startup line (`Loaded N expenses | This month: ...`) and the menu, then adding one expense (option 1) with the `[OK] Added expense` message.
 
 ### Budget alerts
